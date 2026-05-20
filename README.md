@@ -189,6 +189,7 @@ npx serve .
 
 ## 💡 致谢
 
+- 感谢[DeepSeek](https://deepseek.com)提供全程的技术服务，项目90%文件由DeepSeek完成。
 - 感谢 [Ensembl](https://www.ensembl.org) 提供开放的 REST API，让基因查询与序列获取变得简单
 - 感谢 [html2canvas](https://html2canvas.hertzen.com/) 让浏览器端截图导出成为可能
 - 感谢 [GitHub Pages](https://pages.github.com) 提供免费的静态网站托管服务
@@ -196,5 +197,5 @@ npx serve .
 ---
 
 <p align="center">
-  <sub>Made with 🧬 by <strong>Jeson</strong> · 2024</sub>
+  <sub>Made with 🧬 by <strong>Jeson</strong> · 2026</sub>
 </p>
