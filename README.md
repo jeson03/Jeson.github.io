@@ -17,7 +17,7 @@
     <img src="https://img.shields.io/badge/GitHub-仓库-black?style=flat-square&logo=github" alt="GitHub 仓库"/>
   </a>
   <a href="./LICENSE">
-    <img src="https://img.shields.io/badge/license-MIT-green?style=flat-square&logo=open-source-initiative" alt="许可证"/>
+    <img src="https://img.shields.io/badge/license-GPLv3-blue?style=flat-square&logo=gnu" alt="许可证"/>
   </a>
 </p>
 
@@ -130,6 +130,7 @@ npx serve .
 ---
 
 ## 📁 项目结构
+```
 .
 ├── index.html              # 主页面
 ├── style.css               # 全局样式（科技风主题）
@@ -145,7 +146,7 @@ npx serve .
 ├── history.js              # 历史记录管理（localStorage）
 ├── README.md               # 项目说明（本文件）
 └── LICENSE                 # MIT 许可证
-
+```
 ---
 
 ## 🗺️ 开发路线图
@@ -183,7 +184,7 @@ npx serve .
 
 ## 📄 许可证
 
-本项目基于 **MIT 许可证** 开源。详见 [LICENSE](./LICENSE) 文件。
+本项目基于 **GPLv3 许可证** 开源。详见 [LICENSE](./LICENSE) 文件。
 
 ---
 
