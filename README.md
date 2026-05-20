@@ -145,7 +145,7 @@ npx serve .
 ├── api-examples.js         # 在线示例基因下载
 ├── history.js              # 历史记录管理（localStorage）
 ├── README.md               # 项目说明（本文件）
-└── LICENSE                 # MIT 许可证
+└── LICENSE                 # 许可证
 ```
 ---
 
