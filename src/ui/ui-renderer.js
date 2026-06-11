@@ -1,5 +1,5 @@
-import { highlightAA } from './dna-utils.js';
-import { generateSixFrames } from './translator.js';
+import { highlightAA } from '../core/dna-utils.js';
+import { generateSixFrames } from '../core/translator.js';
 
 let lastSixFrameResults = [];
 
@@ -23,7 +23,7 @@ export function updateStats(aaLength, dnaLength) {
  * @param {number} len - 预览长度
  * @returns {string}
  */
-function getPreview(aaSeq, len = 25) {
+function getPreview(aaSeq, len = 80) {
     if (aaSeq.length <= len) return aaSeq;
     return aaSeq.slice(0, len) + '…';
 }
@@ -109,10 +109,10 @@ function toggleAllFrames(container) {
     if (rows.length === 0) return;
 
     // 判断当前状态：如果存在展开的，则全部折叠；否则全部展开
-    const hasExpanded = Array.from(rows).some(row => !row.classList.contains('collapsed'));
+    const hasExpanded = Array.from(rows).some((row) => !row.classList.contains('collapsed'));
     const targetCollapsed = hasExpanded; // 如果存在展开的，就全部折叠
 
-    rows.forEach(row => {
+    rows.forEach((row) => {
         if (targetCollapsed) {
             row.classList.add('collapsed');
         } else {
@@ -188,4 +188,39 @@ export function renderSixFrame(rawInput) {
     });
 
     updateStats(frames[0].aaSequence.length, dna.length);
+}
+
+/**
+ * 比对成功后：自动展开匹配的翻译框并高亮闪烁 5 秒
+ * @param {number} frameIdx - 匹配的框索引 (0-5)
+ * @param {number} matchStart - 匹配在序列中的起始位置 (0-based)
+ * @param {number} matchLength - 匹配片段长度
+ */
+export function flashMatchingFrame(frameIdx, matchStart, matchLength) {
+    const row = document.querySelector(`.orf-row[data-frame-idx="${frameIdx}"]`);
+    if (!row) return;
+
+    // 1) 自动展开
+    const wasCollapsed = row.classList.contains('collapsed');
+    if (wasCollapsed) {
+        row.classList.remove('collapsed');
+        const btn = row.querySelector('.orf-collapse-btn');
+        if (btn) {
+            btn.innerHTML = '▼';
+            btn.title = '点击折叠';
+        }
+        const label = row.querySelector('.orf-label');
+        if (label) label.title = '点击折叠';
+    }
+
+    // 2) 滚动到视口
+    row.scrollIntoView({ behavior: 'smooth', block: 'center' });
+
+    // 3) 添加闪烁动画
+    row.classList.add('match-flash');
+
+    // 4) 5 秒后移除
+    setTimeout(() => {
+        row.classList.remove('match-flash');
+    }, 5000);
 }

@@ -21,13 +21,13 @@ export function generateSixFrames(rawInput) {
         { label: '正链 框3 ➡️', dna: dna, frame: 2, cssClass: 'forward-3' },
         { label: '反链 框1 ⬅️', dna: reverseDna, frame: 0, cssClass: 'reverse-1' },
         { label: '反链 框2 ⬅️', dna: reverseDna, frame: 1, cssClass: 'reverse-2' },
-        { label: '反链 框3 ⬅️', dna: reverseDna, frame: 2, cssClass: 'reverse-3' }
+        { label: '反链 框3 ⬅️', dna: reverseDna, frame: 2, cssClass: 'reverse-3' },
     ];
 
-    const results = frames.map(info => ({
+    const results = frames.map((info) => ({
         label: info.label,
         cssClass: info.cssClass,
-        aaSequence: translateFrame(info.dna, info.frame)
+        aaSequence: translateFrame(info.dna, info.frame),
     }));
 
     return { dna, frames: results };

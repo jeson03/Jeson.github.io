@@ -30,7 +30,7 @@ export function saveHistory(source, sequence, aaLength = 0) {
         source,
         dnaLength: sequence.length,
         aaLength,
-        sequence  // 保存完整序列，便于回溯
+        sequence, // 保存完整序列，便于回溯
     });
     // 超过最大数量则截断
     if (history.length > MAX_ITEMS) {
@@ -44,7 +44,7 @@ export function saveHistory(source, sequence, aaLength = 0) {
  * @param {number} id
  */
 export function deleteHistory(id) {
-    const history = getHistory().filter(item => item.id !== id);
+    const history = getHistory().filter((item) => item.id !== id);
     localStorage.setItem(STORAGE_KEY, JSON.stringify(history));
 }
 

@@ -1,6 +1,10 @@
 # Dependencies
 node_modules/
 
+# Build output
+dist/
+build/
+
 # IDE and editor files
 .vscode/
 .idea/
@@ -10,9 +14,8 @@ node_modules/
 .DS_Store
 Thumbs.db
 
-# Build output
-dist/
-build/
+# Test coverage
+coverage/
 
 # Logs
 *.log
@@ -22,6 +25,9 @@ npm-debug.log*
 .env
 .env.local
 .env.*.local
+
+# OS files
+Desktop.ini
 
 # Temporary files
 tmp/

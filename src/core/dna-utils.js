@@ -7,8 +7,11 @@ export function cleanAASequence(input) {
 }
 
 function getComplement(seq) {
-    const map = { 'A': 'T', 'T': 'A', 'C': 'G', 'G': 'C' };
-    return seq.split('').map(base => map[base] || base).join('');
+    const map = { A: 'T', T: 'A', C: 'G', G: 'C' };
+    return seq
+        .split('')
+        .map((base) => map[base] || base)
+        .join('');
 }
 
 export function reverseComplement(seq) {

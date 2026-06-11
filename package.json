@@ -1,0 +1,43 @@
+{
+  "name": "orf-verifier-pro",
+  "version": "2.0.0",
+  "description": "基因暗码解析终端 — DNA六框翻译与IGV序列比对工具",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:coverage": "vitest run --coverage",
+    "lint": "eslint src/ tests/",
+    "lint:fix": "eslint src/ tests/ --fix",
+    "format": "prettier --write \"src/**/*.js\" \"tests/**/*.js\"",
+    "format:check": "prettier --check \"src/**/*.js\" \"tests/**/*.js\""
+  },
+  "devDependencies": {
+    "@vitest/coverage-v8": "^3.0.0",
+    "eslint": "^9.0.0",
+    "jsdom": "^29.1.1",
+    "prettier": "^3.2.0",
+    "vite": "^6.0.0",
+    "vitest": "^3.0.0"
+  },
+  "keywords": [
+    "bioinformatics",
+    "dna",
+    "orf",
+    "translation",
+    "sequence-alignment",
+    "genomics"
+  ],
+  "author": "Jeson",
+  "license": "GPL-3.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jeson03/Jeson.github.io"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

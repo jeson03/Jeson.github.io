@@ -1,5 +1,5 @@
 // Ensembl REST API 基因查询模块
-import { reverseComplement } from './dna-utils.js';
+import { reverseComplement } from '../core/dna-utils.js';
 
 const ENSEMBL_BASE = 'https://rest.ensembl.org';
 
@@ -17,7 +17,7 @@ async function getLongestCodingTranscript(geneId) {
     if (!response.ok) throw new Error('获取转录本失败');
     const transcripts = await response.json();
 
-    const codingTranscripts = transcripts.filter(t => t.biotype === 'protein_coding');
+    const codingTranscripts = transcripts.filter((t) => t.biotype === 'protein_coding');
     if (codingTranscripts.length === 0) throw new Error('该基因没有蛋白质编码转录本');
 
     let best = null;
@@ -35,7 +35,7 @@ async function getLongestCodingTranscript(geneId) {
         chrom: best.seq_region_name,
         start: best.start,
         end: best.end,
-        strand: best.strand === 1 ? '+' : '-'
+        strand: best.strand === 1 ? '+' : '-',
     };
 }
 
@@ -94,6 +94,6 @@ export async function fetchGeneCDS(geneSymbol, faFile, faiIndex, extractFunc) {
         chrom: transInfo.chrom,
         start: transInfo.start,
         end: transInfo.end,
-        strand: transInfo.strand
+        strand: transInfo.strand,
     };
 }

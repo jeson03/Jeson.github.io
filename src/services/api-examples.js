@@ -17,7 +17,7 @@ export async function lookupGene(symbol) {
         chrom: data.seq_region_name,
         start: data.start,
         end: data.end,
-        strand: data.strand === 1 ? '+' : '-'
+        strand: data.strand === 1 ? '+' : '-',
     };
 }
 
@@ -46,12 +46,7 @@ async function getSequence(chrom, start, end, strand) {
 export async function fetchGeneSequence(symbol) {
     const gene = await lookupGene(symbol);
     // 获取基因区域的基因组序列（根据链方向获取正确的序列）
-    const sequence = await getSequence(
-        gene.chrom,
-        gene.start,
-        gene.end,
-        gene.strand
-    );
+    const sequence = await getSequence(gene.chrom, gene.start, gene.end, gene.strand);
 
     return {
         symbol: symbol.toUpperCase(),
@@ -59,7 +54,7 @@ export async function fetchGeneSequence(symbol) {
         chrom: gene.chrom,
         start: gene.start,
         end: gene.end,
-        strand: gene.strand
+        strand: gene.strand,
     };
 }
 
@@ -76,5 +71,5 @@ export const REMOTE_EXAMPLES = [
     { symbol: 'PTEN', name: '🛡️ PTEN', desc: '磷酸酶和张力蛋白同源物，抑癌基因' },
     { symbol: 'APC', name: '🛡️ APC', desc: '腺瘤性息肉病基因，结直肠癌相关' },
     { symbol: 'MYC', name: '🎯 MYC', desc: '原癌基因转录因子' },
-    { symbol: 'RB1', name: '🛡️ RB1', desc: '视网膜母细胞瘤蛋白，首个发现的抑癌基因' }
+    { symbol: 'RB1', name: '🛡️ RB1', desc: '视网膜母细胞瘤蛋白，首个发现的抑癌基因' },
 ];
