@@ -84,17 +84,10 @@ export async function fetchGeneCDS(geneSymbol, faFile, faiIndex, extractFunc) {
     const exons = await getCDSExons(transInfo.transcriptId);
     let cdsSeq = await extractCDS(faFile, faiIndex, transInfo.chrom, exons, extractFunc);
 
-    console.log('=== 基因搜索调试 ===');
-    console.log('基因名:', geneSymbol);
-    console.log('链方向:', transInfo.strand);
-    console.log('拼接后 CDS 前 60bp:', cdsSeq.slice(0, 60));
-
+    // 反链基因需要反向互补，得到正确的编码链（mRNA 序列）
     if (transInfo.strand === '-') {
         cdsSeq = reverseComplement(cdsSeq);
-        console.log('反向互补后 CDS 前 60bp:', cdsSeq.slice(0, 60));
     }
-
-    console.log('最终返回序列前 60bp:', cdsSeq.slice(0, 60));
 
     return {
         sequence: cdsSeq,
@@ -104,23 +97,3 @@ export async function fetchGeneCDS(geneSymbol, faFile, faiIndex, extractFunc) {
         strand: transInfo.strand
     };
 }
-
-// export async function fetchGeneCDS(geneSymbol, faFile, faiIndex, extractFunc) {
-//     const geneId = await lookupGeneId(geneSymbol);
-//     const transInfo = await getLongestCodingTranscript(geneId);
-//     const exons = await getCDSExons(transInfo.transcriptId);
-//     let cdsSeq = await extractCDS(faFile, faiIndex, transInfo.chrom, exons, extractFunc);
-
-//     // 反链基因必须反向互补，得到正确的编码链（mRNA 序列）
-//     if (transInfo.strand === '-') {
-//         cdsSeq = reverseComplement(cdsSeq);
-//     }
-
-//     return {
-//         sequence: cdsSeq,
-//         chrom: transInfo.chrom,
-//         start: transInfo.start,
-//         end: transInfo.end,
-//         strand: transInfo.strand
-//     };
-// }

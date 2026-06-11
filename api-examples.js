@@ -45,12 +45,12 @@ async function getSequence(chrom, start, end, strand) {
  */
 export async function fetchGeneSequence(symbol) {
     const gene = await lookupGene(symbol);
-    // 获取基因区域的基因组序列（近似全长序列，包含内含子）
+    // 获取基因区域的基因组序列（根据链方向获取正确的序列）
     const sequence = await getSequence(
         gene.chrom,
         gene.start,
         gene.end,
-        gene.strand === '-' ? '1' : '1' // 先获取正链序列，后续根据链方向处理
+        gene.strand
     );
 
     return {
